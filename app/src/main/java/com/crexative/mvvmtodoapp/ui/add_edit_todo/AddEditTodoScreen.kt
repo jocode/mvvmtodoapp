@@ -2,6 +2,7 @@ package com.crexative.mvvmtodoapp.ui.add_edit_todo
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -32,19 +33,17 @@ fun AddEditTodoScreen(
     val snackbarState = remember { SnackbarHostState() }
 
     LaunchedEffect(key1 = true) {
-        viewModel.uiEvent.collect {
-            viewModel.uiEvent.collect { event ->
-                when (event) {
-                    UiEvent.PopBackStack -> onPopBackStack()
-                    is UiEvent.ShowSnackbar -> {
-                        snackbarState.showSnackbar(
-                            message = event.message,
-                            actionLabel = event.action
-                        )
-                    }
-
-                    else -> Unit
+        viewModel.uiEvent.collect { event ->
+            when (event) {
+                is UiEvent.PopBackStack -> onPopBackStack()
+                is UiEvent.ShowSnackbar -> {
+                    snackbarState.showSnackbar(
+                        message = event.message,
+                        actionLabel = event.action
+                    )
                 }
+
+                else -> Unit
             }
         }
     }
@@ -89,9 +88,11 @@ fun AddEditTodoScreen(
                 placeholder = {
                     Text(text = "Description")
                 },
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .aspectRatio(2.5f),
                 singleLine = false,
-                maxLines = 5
+                maxLines = 5,
             )
         }
     }

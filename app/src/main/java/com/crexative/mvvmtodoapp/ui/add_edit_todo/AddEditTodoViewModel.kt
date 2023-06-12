@@ -1,5 +1,6 @@
 package com.crexative.mvvmtodoapp.ui.add_edit_todo
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -72,6 +73,7 @@ class AddEditTodoViewModel @Inject constructor(
                     )
                     repository.insertTodo(newTodo)
                     sendUiEvent(UiEvent.PopBackStack)
+                    Log.e("AddEditTodoViewModel", "onEvent: $newTodo")
                 }
             }
         }

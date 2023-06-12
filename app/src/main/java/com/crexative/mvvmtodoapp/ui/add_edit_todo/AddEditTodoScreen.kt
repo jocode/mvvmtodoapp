@@ -3,6 +3,7 @@ package com.crexative.mvvmtodoapp.ui.add_edit_todo
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
@@ -77,7 +78,7 @@ fun AddEditTodoScreen(
                 placeholder = {
                     Text(text = "Title")
                 },
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier.fillMaxWidth()
             )
             Spacer(modifier = Modifier.padding(8.dp))
             TextField(
@@ -88,7 +89,7 @@ fun AddEditTodoScreen(
                 placeholder = {
                     Text(text = "Description")
                 },
-                modifier = Modifier.fillMaxSize(),
+                modifier = Modifier.fillMaxWidth(),
                 singleLine = false,
                 maxLines = 5
             )

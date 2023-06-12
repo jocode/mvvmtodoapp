@@ -53,10 +53,10 @@ class AddEditTodoViewModel @Inject constructor(
     fun onEvent(event: AddEditTodoEvent) {
         when (event) {
             is AddEditTodoEvent.OnTitleChange -> {
-
+                title = event.title
             }
             is AddEditTodoEvent.OnDescriptionChange -> {
-
+                description = event.description
             }
             AddEditTodoEvent.OnSaveClick -> {
                 viewModelScope.launch {
